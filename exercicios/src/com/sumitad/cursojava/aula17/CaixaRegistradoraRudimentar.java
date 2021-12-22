@@ -29,7 +29,6 @@ public class CaixaRegistradoraRudimentar {
     	preco = scan.nextDouble();
     	
     	total += preco;
-    	contador++;
     	
     	if (total > 0.0 && preco == 0.0) {  
     		
@@ -43,6 +42,8 @@ public class CaixaRegistradoraRudimentar {
     		contador = 1;
     		System.out.println();
     	    System.out.println("Lojas Tabajara");
+    	} else {
+    		contador++;    		
     	}
     	
     } while (!preco.equals(-1.0));
