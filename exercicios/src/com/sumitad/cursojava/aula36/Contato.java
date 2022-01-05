@@ -4,16 +4,15 @@ public class Contato {
     
 	private String nome;
 	private Endereco endereco;
-	private String telefone;
-	
-	
+	private Telefone[] telefones;
+
 	public Contato() {
 	}
 
-	public Contato(String nome, Endereco endereco, String telefone) {
+	public Contato(String nome, Endereco endereco, Telefone[] telefones) {
 		this.nome = nome;
 		this.endereco = endereco;
-		this.telefone = telefone;
+		this.telefones = telefones;
 	}
 
 	public String getNome() {
@@ -31,19 +30,18 @@ public class Contato {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-
-	public String getTelefone() {
-		return telefone;
+	
+	public Telefone[] getTelefones() {
+		return telefones;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setTelefones(Telefone[] telefones) {
+		this.telefones = telefones;
 	}
 	
 	@Override
 	public String toString() {
 		return "Nome: " + getNome() 
-		       + "Telefone: " + getEndereco()
 		       + getEndereco().toString();
 	}
 }
