@@ -8,7 +8,7 @@ public class Conta {
 	private double saldo;
 	private double limiteChequeEspecial;
 	private double saldoChequeEspecial;
-	
+
 	public Conta() {
 	}
 
@@ -62,16 +62,16 @@ public class Conta {
 		return saldoChequeEspecial;
 	}
 
-	public void creditarChequeEspecial(double montante) {
+	private void creditarChequeEspecial(double montante) {
 		this.saldoChequeEspecial += montante;
 	}
 	
 
-	public void debitarChequeEspecial(double montante) {
+	private void debitarChequeEspecial(double montante) {
 		this.saldoChequeEspecial -= montante;
 	}
 
-	public void creditarSaldo(double montante) {
+	private void creditarSaldo(double montante) {
 	
 		this.saldo += montante;
 	}
@@ -97,7 +97,7 @@ public class Conta {
 	
 	public boolean debitar(double montante) {
 		
-		if (podeRetirarMontante(montante)) {
+		if (!podeRetirarMontante(montante)) {
 			return false;
 		}
 		
@@ -118,12 +118,26 @@ public class Conta {
 
 	@Override
 	public String toString() {
-		return "Conta " + getConta() + '-' + getDigitoConta()
-				+ ", agencia " + getAgencia() 
-				+ ", saldo R$ " + String.format("%.2f", getSaldo()) 
-				+ ", limite Cheque Especial R$ " + String.format("%.2f", getLimiteChequeEspecial()) 
-				+ ", saldo Cheque Especial R$ " + String.format("%.2f", getSaldoChequeEspecial());
+		return "Conta: " + getConta() + '-' + getDigitoConta()
+				+ ", agencia: " + getAgencia() 
+				+ ", saldo: R$ " + String.format("%.2f", getSaldo()) 
+				+ ", limite Cheque Especial: R$ " + String.format("%.2f", getLimiteChequeEspecial()) 
+				+ ", saldo Cheque Especial: R$ " + String.format("%.2f", getSaldoChequeEspecial());
 	}
 	
+	public String getInfoSaldo() {
+		
+		String infoChequeEspecial = ""; 
+		double valorEmUsoChequeEspecial = getLimiteChequeEspecial() - getSaldoChequeEspecial();
+		
+		if (getSaldo() == 0D && valorEmUsoChequeEspecial != 0D) {
+			infoChequeEspecial = "Cheque Especial em USO, valor R$: " + valorEmUsoChequeEspecial;
+		}
+		
+		return "Saldo: R$ " + getSaldo()
+		       + " " + infoChequeEspecial
+		       + ", Saldo Cheque Especial: R$ " + getSaldoChequeEspecial()
+		       + ", Limite Cheque Especial: R$ " + getLimiteChequeEspecial();
+	}
 	
 }
