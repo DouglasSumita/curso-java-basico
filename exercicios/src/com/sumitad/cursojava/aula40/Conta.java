@@ -1,6 +1,6 @@
 package com.sumitad.cursojava.aula40;
 
-public class Conta {
+public abstract class Conta {
     
 	private int conta;
 	private int digitoConta;
