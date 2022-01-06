@@ -18,12 +18,33 @@ public class Teste {
 		System.out.println(contaPessoaFisica.getInfoSaldo());	
 	    System.out.println(contaPessoaJuridica.getInfoSaldo());	
 	    
-	    if (contaPessoaFisica.debitar(250.0)) {
-	    	System.out.println("Debito não autorizado");
+	    if (!contaPessoaFisica.debitar(250.0)) {
+	    	System.out.println("Conta Física, Débito não autorizado");
 	    }
 	    
-	    if (contaPessoaJuridica.debitar(350.0)) {
-	    	System.out.println("Debito não autorizado");
+	    if (!contaPessoaJuridica.debitar(350.0)) {
+	    	System.out.println("Conta Jurídica, Debito não autorizado");
+	    }
+	    
+	    System.out.println();
+	    System.out.println("Valor atualizado:");
+		System.out.println(contaPessoaFisica.getInfoSaldo());	
+	    System.out.println(contaPessoaJuridica.getInfoSaldo());
+	    
+	    contaPessoaFisica.creditar(1000.0);
+	    contaPessoaJuridica.creditar(500.0);
+	    
+	    System.out.println();
+	    System.out.println("Valor atualizado:");
+		System.out.println(contaPessoaFisica.getInfoSaldo());	
+	    System.out.println(contaPessoaJuridica.getInfoSaldo());
+	    
+	    if (!contaPessoaFisica.debitar(450.0)) {
+	    	System.out.println("Conta Física, Débito não autorizado");
+	    }
+	    
+	    if (!contaPessoaJuridica.debitar(3050.0)) {
+	    	System.out.println("Conta Jurídica, Debito não autorizado");
 	    }
 	    
 	    System.out.println();
